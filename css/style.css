@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+
+  font-family: sans-serif;
+  color: #585858;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+/* font-weight는 100단위로 올라간다 100~900까지 */
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+}
+/* 이미지 하단 미세한 공백 제거 */
+
+span {
+  display: block;
+}
+
+#header h1 {
+  background-color: yellow;
+}
+
+#header h1 .logo {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: 65px;
+  /* background-color: yellow; */
+}
+/* a태그에 부여한 사이즈가 부모 태그인 h1과 header에 영향을 주게 되었다. */
+
+#header .logo img {
+  position: absolute;
+
+  top: 0;
+  margin-top: 23px;
+
+  left: 50%;
+  margin-left: -93px;
+}
+
+/* 보통 미디어쿼리 안에서 모바일 버전 디자인을 하지만 핼백 사이트의 경우에는 반대로 작업을 했다 */
+/* css 때문에 자바스크립트도 끝에 ; 세미클론이 들어가는 걸까? */
+
+#header .buttons {
+  overflow: hidden;
+}
+
+#header .buttons li {
+  position: relative;
+  float: left;
+
+  width: 33.3333%;
+  height: 65px;
+  /* border: solid 5px red; */
+}
+
+/* 보통 3등분 할 때는 33.33% 소숫점 뒷자리 3개수는 마음대로 */
+
+#header .buttons .menu-button {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* li 태그와 a태그 영역 같게해서 화살표 손가락으로 변하게 하기 위해서 작업
+    a태그 inline 속성이라 block 설정
+    img 태그가 inline-block 속성이라서  text-align: center; 적용가능(인라인or인라인블럭) */
+
+#header .buttons li:nth-child(1) .menu-button {
+  background-color: blue;
+}
+
+/* nth-child() ()번째 자식 선택*/
+
+#header .buttons li:nth-child(2) .menu-button {
+  background-color: pink;
+}
+
+#header .buttons li:nth-child(3) .menu-button {
+  background-color: green;
+}
+
+#header .buttons li .menu-button img {
+  position: relative;
+  height: 20px;
+
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* y축 중앙정렬 코드
+    top 값을 사용하기 위해서 포지션 렐리티브 적용
+    
+    top: 50%;
+    transform: translateY(-50%);
+
+*/
+
+/* 모바일 버전 작성 끝 */
+
+/* PC 버전 작업 시작 미디어 쿼리 안에 작업 */
+
+/* 1em = 16px */
+@media (min-with: 47em) {
+  #header {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+
+    top: 0;
+    left: 0;
+
+    z-index: 9999;
+  }
+
+  #header h1 {
+    width: 50%;
+  }
+
+  #header .logo {
+    width: 280px;
+    height: 80px;
+  }
+
+  #header .logo img {
+    margin-top: 30px;
+  }
+
+  #header .buttons {
+    position: absolute;
+    width: 50%;
+
+    left: 50%;
+    top: 0;
+  }
+  /* 앱솔루트는 width 값을 인식못해서 px나 %로 명확하게 규정을 해줘야한다 */
+  /* left 50% 공간 넣고 top : 0; 넣어서 결과적으로 오른쪽으로 당기고 위로 올려 맞춤 */
+
+  #header .buttons li {
+    height: 80px;
+  }
+}
